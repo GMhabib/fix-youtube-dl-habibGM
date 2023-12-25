@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# -------------------------------
+# Info:
+#   author	: Viliyam Vasava refixed habibGM
+#   file	: setup
+#   created	: 25.12.2023
+#   revision	: 25.12.2023
+#   version	: 0.1
+# -------------------------------
+# Requirements:
+#   python, ffmpeg, git, ncurses-utils, youtube-dl.
+# Description:
+#   Setup Shell Script of youtube-dl Downloader for Termux in Android.
+#
+# -------------------------------
+clear
+
+sleep 2;
+
+echo  "Installing required packages"
+echo  ""
+
+sleep 2
+
+pkg install python ffmpeg ncurses-utils figlet -y && pip install youtube-dl
+
+mkdir ~/bin
+
+cp ~/fix-youtube-dl-habibGM/termux-url-opener ~/bin/
+
+cp ~/fix-youtube-dl-habibGM/youtube-help ~/../usr/bin
+
+rm -fr /data/data/com.termux/files/usr/lib/python3.11/site-packages/youtube_dl/extractor/youtube.py
+cp -r youtube.py /data/data/com.termux/files/usr/lib/python3.11/site-packages/youtube_dl/extractor/youtube.py
+
+echo  "Setting up"
+
+sleep 2
+cd ~/
